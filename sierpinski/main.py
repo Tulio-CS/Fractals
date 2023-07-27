@@ -1,10 +1,9 @@
 import math
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
 from random import choice
 
 
-
+n_points = 1000
 
 
 #Criando o triangulo Base
@@ -18,14 +17,14 @@ plt.scatter(point_a[0],point_a[1], s = 0.8, color = "#FFD700")
 plt.scatter(point_b[0],point_b[1], s = 0.8, color = "#FFD700")
 plt.scatter(point_c[0],point_c[1], s = 0.8, color = "#FFD700")
 
-
-n_points = 1000
 points = [point_a,point_b,point_c]
 
 
 
 
 def new_point(point_1,point_2):
+    """Funcao que calcula o ponto medio entre dois pontos
+    Tuple, Tuple -> Tuple"""
     x0,y0 = point_1
     x1,y1 = point_2
     new_x = (x1 + x0) / 2
@@ -33,6 +32,8 @@ def new_point(point_1,point_2):
     return (new_x, new_y)
 
 def loop(num_points):
+    """Funcao loop que criara o triangulo de sierpinski
+    int -> None"""
     current = new_point(point_a,point_b)
     plt.scatter(current[0],current[1],s = 0.8, color = "#FFD700")
     for i in range(num_points):
@@ -43,9 +44,10 @@ def loop(num_points):
         current = new
 
 
-loop(n_points)
-plt.title("Sierpinski Triangle")
-plt.show()
+if __name__ == "__main__":
+    loop(n_points)
+    plt.title("Sierpinski Triangle")
+    plt.show()
 
 
 
